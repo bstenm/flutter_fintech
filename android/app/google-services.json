@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "84297706221",
+    "firebase_url": "https://experiments-58acf.firebaseio.com",
+    "project_id": "experiments-58acf",
+    "storage_bucket": "experiments-58acf.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:84297706221:android:b0df3366a9bf307a00bae4",
+        "android_client_info": {
+          "package_name": "com.example.flutter_fintech"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "84297706221-e8hf6v4437jc5a0uai62p3d7lc4o2lht.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAUkjUGpHYIB66UbS9YV07ygoPDkjDoEYE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "84297706221-e8hf6v4437jc5a0uai62p3d7lc4o2lht.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
