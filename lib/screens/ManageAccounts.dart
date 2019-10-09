@@ -9,6 +9,7 @@ import '../widgets/ManageAccounts.dart';
 import '../models/NavigationItemModel.dart';
 import '../widgets/BottomNavigation.dart';
 
+// the list of links to display inside the bottom navigation bar
 const List<NavigationItemModel> navigationItems = <NavigationItemModel>[
   NavigationItemModel(title: 'Transactions', icon: Icons.show_chart),
   NavigationItemModel(title: 'Accounts', icon: Icons.account_balance_wallet),
@@ -26,6 +27,7 @@ class ManageAccountsScreen extends StatelessWidget {
       body: StreamBuilder<QuerySnapshot>(
           stream: Firestore.instance.collection('users').snapshots(),
           builder: (context, snapshot) {
+            // display a spinner while waiting for the data from firestore
             if (!snapshot.hasData) {
               return Center(
                 child: Row(
@@ -37,6 +39,8 @@ class ManageAccountsScreen extends StatelessWidget {
               );
             }
 
+            // display a message if an error occured while
+            // trying to retrieve the data from firestore
             if (snapshot.hasError) {
               return Center(
                 child: Text(
@@ -51,24 +55,32 @@ class ManageAccountsScreen extends StatelessWidget {
             int totalDebt = data['totalDebt'];
             int totalBalance = data['totalBalance'];
 
+            // we do the data processing as soon as we get it from firestore: //
+            //  we turn it into modelled data usable by the corrsponding widgets //
+
+            // the modelled data for the chart
             List<SpendingDataModel> chartData =
                 data['spendingData'].map<SpendingDataModel>((dataPoint) {
               return SpendingDataModel.fromJson(
                   Map<String, dynamic>.from(dataPoint));
             }).toList();
 
+            // the modelled data for the list of credit cards
             List<CreditCardModel> creditCards =
                 data['creditCards'].map<CreditCardModel>((creditCard) {
               return CreditCardModel.fromJson(
                   Map<String, dynamic>.from(creditCard));
             }).toList();
 
+            // the modelled data for the list of bank accounts
             List<BankAccountModel> accounts =
                 data['bankAccounts'].map<BankAccountModel>((account) {
               return BankAccountModel.fromJson(
                   Map<String, dynamic>.from(account));
             }).toList();
 
+            // SafeArea gives a padding to make sure the edges of the
+            // screen content  are always fully visible on all devices
             return SafeArea(
               child: ManageAccounts(
                 chartData: chartData,

@@ -33,6 +33,7 @@ class _ManageAccountsState extends State<ManageAccounts> {
   Widget build(BuildContext context) {
     String currency = '\$';
 
+    // displays all the widgets on scren using a ListView to provide scrolling
     return ListView(
       children: <Widget>[
         AccountOverview(
@@ -40,16 +41,20 @@ class _ManageAccountsState extends State<ManageAccounts> {
           totalDebt: widget.totalDebt,
           totalBalance: widget.totalBalance,
         ),
+        // needs to have a height set as we are
+        // inside a widget with unbound height
         Container(
           height: 120.0,
           child: SpendingChart(
             data: widget.chartData,
           ),
         ),
+        // the horizontal list of credit cards
         CardList(
           currency: currency,
           creditCards: widget.creditCards,
         ),
+        // the vertical list of accounts
         AccountList(
           currency: currency,
           accounts: widget.accounts,

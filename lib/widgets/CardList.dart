@@ -13,10 +13,10 @@ class CardList extends StatelessWidget {
 
   final List<CreditCardModel> creditCards;
   final String currency;
+  // the 2 gradients of color available for the cards background
   final List<Map<String, int>> colorGradients = [
     {'start': 0xFFA245E8, 'end': 0xFFF43587},
     {'start': 0xFFF43587, 'end': 0xFF5568FE},
-    {'start': 0xFF7C5FE7, 'end': 0xFFF43587},
   ];
 
   @override
@@ -27,6 +27,8 @@ class CardList extends StatelessWidget {
           dialogText: 'Manage your cards',
           headerText: 'Credit cards',
         ),
+        // needs to have a height set as we are
+        // inside a widget with unbound height
         Container(
           height: 155.0,
           child: ListView.builder(
@@ -36,7 +38,8 @@ class CardList extends StatelessWidget {
               return CreditCard(
                 currency: currency,
                 creditCard: creditCards[index],
-                colorGradient: colorGradients[index],
+                // if index is even we use the first color gradient, else the second one
+                colorGradient: colorGradients[index % 2 == 0 ? 0 : 1],
               );
             },
           ),

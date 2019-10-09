@@ -18,7 +18,6 @@ class CreditCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      // TODO: elevation
       child: Container(
         padding: EdgeInsets.all(10.0),
         width: 255.0,
@@ -27,6 +26,7 @@ class CreditCard extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
+                // shows the current credit along with the currency,
                 Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
@@ -41,6 +41,7 @@ class CreditCard extends StatelessWidget {
                       ),
                     ),
                     Text(
+                      // a placeholder is shown if current credit is null
                       showDataOrPlaceholder(creditCard.currentCredit),
                       style: TextStyle(
                         fontSize: 32.0,
@@ -50,6 +51,7 @@ class CreditCard extends StatelessWidget {
                   ],
                 ),
                 Text(
+                  // a placeholder is shown if current credit is missing
                   showDataOrPlaceholder(creditCard.type),
                   style: TextStyle(
                     color: Colors.white,
@@ -60,7 +62,9 @@ class CreditCard extends StatelessWidget {
                 ),
               ],
             ),
+            // some spacing
             SizedBox(height: 50.0),
+            // displays the credit card number and the expiry date
             Align(
               alignment: Alignment.bottomRight,
               child: Column(
@@ -73,6 +77,7 @@ class CreditCard extends StatelessWidget {
                     ),
                   ),
                   Text(
+                    // a placeholder is shown if expiry date is missing
                     showDataOrPlaceholder(creditCard.expiryDate),
                     style: TextStyle(color: Colors.grey[400]),
                   ),
@@ -81,6 +86,7 @@ class CreditCard extends StatelessWidget {
             ),
           ],
         ),
+        // gives the rounded corner of the card and its background color
         decoration: BoxDecoration(
           borderRadius: BorderRadius.all(
             Radius.circular(10.0),

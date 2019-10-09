@@ -22,6 +22,7 @@ class AccountOverview extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: <Widget>[
+          // the total balance
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
@@ -46,6 +47,7 @@ class AccountOverview extends StatelessWidget {
                     ),
                   ),
                   Text(
+                    // displays a placeholder if total balance data missing
                     showDataOrPlaceholder(totalBalance),
                     style: TextStyle(
                       fontSize: 40.0,
@@ -55,6 +57,7 @@ class AccountOverview extends StatelessWidget {
               )
             ],
           ),
+          // the total debt
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
@@ -65,6 +68,7 @@ class AccountOverview extends StatelessWidget {
                 ),
               ),
               Text(
+                // displays a placeholder if total debt data missing
                 '$currency ${showDataOrPlaceholder(totalDebt)}',
                 style: TextStyle(
                   fontSize: 20.0,

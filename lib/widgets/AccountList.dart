@@ -22,13 +22,14 @@ class AccountList extends StatelessWidget {
           dialogText: 'Manage your accounts',
           headerText: 'Bank accounts',
         ),
-        // Non-scrollable list as the space the list takes in the
-        // viewport is too small to make scrolling convenient
+        // Chose to make list non-scrollable as it is
+        // at the bottom of the screen
         Column(
           children: accounts.map((account) {
             final String type = account.type;
             final double balance = account.balance;
             final String bankName = account.bankName;
+            // the logo name is the bank name in lower case and without white spaces
             final String logo = bankName == null
                 ? 'placeholder'
                 : bankName.toLowerCase().replaceAll(' ', '');
@@ -49,6 +50,7 @@ class AccountList extends StatelessWidget {
                       ),
                     ),
                     Text(
+                      // displays a placeholder if the bank name data is missing
                       showDataOrPlaceholder(bankName),
                       style: TextStyle(
                         fontSize: 14.0,
@@ -58,6 +60,7 @@ class AccountList extends StatelessWidget {
                   ],
                 ),
                 trailing: Text(
+                  // displays a placeholder if the balance data is missing
                   '$currency${showDataOrPlaceholder(balance)}',
                   style: TextStyle(
                     fontWeight: FontWeight.bold,

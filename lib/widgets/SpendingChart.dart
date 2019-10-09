@@ -9,7 +9,7 @@ class SpendingChart extends StatelessWidget {
   SpendingChart({
     Key key,
     @required this.data,
-  });
+  }) : super(key: key);
 
   List<charts.Series<SpendingDataModel, DateTime>> _getSeriesData() {
     return [

@@ -24,6 +24,7 @@ class SectionHeader extends StatelessWidget {
               fontWeight: FontWeight.w600,
             ),
           ),
+          // shows a dialog box on tap
           GestureDetector(
             child: Text(
               'Manage',
