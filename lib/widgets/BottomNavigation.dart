@@ -8,7 +8,7 @@ class BottomNavigation extends StatefulWidget {
   BottomNavigation({
     Key key,
     @required this.navigationItems,
-  });
+  }) : super(key: key);
 
   @override
   _BottomNavigationState createState() => _BottomNavigationState();

@@ -1,7 +1,6 @@
 class CreditCardModel {
   final String type;
   final String lastDigits;
-  // TODO: expiry date as a date
   final String expiryDate;
   final int currentCredit;
 

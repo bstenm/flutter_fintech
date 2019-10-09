@@ -26,6 +26,8 @@ class CardList extends StatelessWidget {
         SectionHeader(
           dialogText: 'Manage your cards',
           headerText: 'Credit cards',
+          // for integration tests
+          sectionKey: 'card_list',
         ),
         // needs to have a height set as we are
         // inside a widget with unbound height
@@ -40,6 +42,8 @@ class CardList extends StatelessWidget {
                 creditCard: creditCards[index],
                 // if index is even we use the first color gradient, else the second one
                 colorGradient: colorGradients[index % 2 == 0 ? 0 : 1],
+                // for integration tests
+                itemKey: 'card_$index',
               );
             },
           ),

@@ -3,9 +3,11 @@ import 'package:flutter/material.dart';
 class SectionHeader extends StatelessWidget {
   final String dialogText;
   final String headerText;
+  final String sectionKey;
 
   SectionHeader({
     Key key,
+    this.sectionKey,
     @required this.dialogText,
     @required this.headerText,
   }) : super(key: key);
@@ -19,6 +21,8 @@ class SectionHeader extends StatelessWidget {
         children: <Widget>[
           Text(
             headerText,
+            // for integration tests
+            key: Key('${sectionKey}_section_header'),
             style: TextStyle(
               fontSize: 17.0,
               fontWeight: FontWeight.w600,
@@ -28,6 +32,8 @@ class SectionHeader extends StatelessWidget {
           GestureDetector(
             child: Text(
               'Manage',
+              // for integration tests
+              key: Key('${sectionKey}_manage_btn'),
               style: TextStyle(
                 color: Colors.blue[400],
                 fontSize: 16.0,
@@ -38,7 +44,11 @@ class SectionHeader extends StatelessWidget {
               showDialog(
                 context: context,
                 builder: (BuildContext ctx) => AlertDialog(
-                  title: Text(dialogText),
+                  title: Text(
+                    dialogText,
+                    // for integration tests
+                    key: Key('${sectionKey}_dialog'),
+                  ),
                 ),
               );
             },

@@ -8,7 +8,7 @@ import '../widgets/AccountList.dart';
 import '../widgets/CardList.dart';
 import '../widgets/AccountOverview.dart';
 
-class ManageAccounts extends StatefulWidget {
+class ManageAccounts extends StatelessWidget {
   final int totalDebt;
   final int totalBalance;
   final List<CreditCardModel> creditCards;
@@ -25,39 +25,36 @@ class ManageAccounts extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  _ManageAccountsState createState() => _ManageAccountsState();
-}
-
-class _ManageAccountsState extends State<ManageAccounts> {
-  @override
   Widget build(BuildContext context) {
     String currency = '\$';
 
     // displays all the widgets on scren using a ListView to provide scrolling
     return ListView(
+      // for integration tests
+      key: Key('screen'),
       children: <Widget>[
         AccountOverview(
           currency: currency,
-          totalDebt: widget.totalDebt,
-          totalBalance: widget.totalBalance,
+          totalDebt: totalDebt,
+          totalBalance: totalBalance,
         ),
         // needs to have a height set as we are
         // inside a widget with unbound height
         Container(
           height: 120.0,
           child: SpendingChart(
-            data: widget.chartData,
+            data: chartData,
           ),
         ),
         // the horizontal list of credit cards
         CardList(
           currency: currency,
-          creditCards: widget.creditCards,
+          creditCards: creditCards,
         ),
         // the vertical list of accounts
         AccountList(
           currency: currency,
-          accounts: widget.accounts,
+          accounts: accounts,
         ),
       ],
     );

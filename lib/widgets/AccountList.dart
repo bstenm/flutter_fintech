@@ -21,6 +21,8 @@ class AccountList extends StatelessWidget {
         SectionHeader(
           dialogText: 'Manage your accounts',
           headerText: 'Bank accounts',
+          // for integration tests
+          sectionKey: 'account_list',
         ),
         // Chose to make list non-scrollable as it is
         // at the bottom of the screen
@@ -45,6 +47,8 @@ class AccountList extends StatelessWidget {
                   children: <Widget>[
                     Text(
                       '${type == null ? 'Unknown' : type} account',
+                      // for integration tests
+                      key: Key('${type}_account_type'),
                       style: TextStyle(
                         fontSize: 15.0,
                       ),
@@ -52,6 +56,8 @@ class AccountList extends StatelessWidget {
                     Text(
                       // displays a placeholder if the bank name data is missing
                       showDataOrPlaceholder(bankName),
+                      // for integration tests
+                      key: Key('${type}_account_bank_name'),
                       style: TextStyle(
                         fontSize: 14.0,
                         color: Colors.grey,
@@ -62,6 +68,8 @@ class AccountList extends StatelessWidget {
                 trailing: Text(
                   // displays a placeholder if the balance data is missing
                   '$currency${showDataOrPlaceholder(balance)}',
+                  // for integration tests
+                  key: Key('${type}_account_balance'),
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
                   ),

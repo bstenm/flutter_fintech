@@ -6,11 +6,13 @@ import '../utils.dart';
 class CreditCard extends StatelessWidget {
   CreditCard({
     Key key,
+    this.itemKey,
     this.colorGradient,
     @required this.currency,
     @required this.creditCard,
   }) : super(key: key);
 
+  final String itemKey;
   final String currency;
   final CreditCardModel creditCard;
   final Map<String, int> colorGradient;
@@ -43,6 +45,8 @@ class CreditCard extends StatelessWidget {
                     Text(
                       // a placeholder is shown if current credit is null
                       showDataOrPlaceholder(creditCard.currentCredit),
+                      // for integration tests
+                      key: Key('${itemKey}_credit'),
                       style: TextStyle(
                         fontSize: 32.0,
                         color: Colors.white,
@@ -53,6 +57,9 @@ class CreditCard extends StatelessWidget {
                 Text(
                   // a placeholder is shown if current credit is missing
                   showDataOrPlaceholder(creditCard.type),
+                  // for integration tests
+                  key: Key('${itemKey}_type'),
+
                   style: TextStyle(
                     color: Colors.white,
                     fontWeight: FontWeight.w900,
@@ -72,6 +79,8 @@ class CreditCard extends StatelessWidget {
                 children: [
                   Text(
                     '****  ****  ****  ${creditCard.lastDigits == null ? '****' : creditCard.lastDigits}',
+                    // for integration tests
+                    key: Key('${itemKey}_number'),
                     style: TextStyle(
                       color: Colors.white,
                     ),
@@ -79,6 +88,8 @@ class CreditCard extends StatelessWidget {
                   Text(
                     // a placeholder is shown if expiry date is missing
                     showDataOrPlaceholder(creditCard.expiryDate),
+                    // for integration tests
+                    key: Key('${itemKey}_expiry_date'),
                     style: TextStyle(color: Colors.grey[400]),
                   ),
                 ],

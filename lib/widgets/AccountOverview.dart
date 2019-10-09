@@ -27,7 +27,7 @@ class AccountOverview extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
               Padding(
-                padding: const EdgeInsets.only(bottom: 5.0),
+                padding: EdgeInsets.only(bottom: 5.0),
                 child: Text(
                   'Total balance',
                   style: TextStyle(
@@ -49,6 +49,8 @@ class AccountOverview extends StatelessWidget {
                   Text(
                     // displays a placeholder if total balance data missing
                     showDataOrPlaceholder(totalBalance),
+                    // for integration tests
+                    key: Key('total_balance'),
                     style: TextStyle(
                       fontSize: 40.0,
                     ),
@@ -70,6 +72,8 @@ class AccountOverview extends StatelessWidget {
               Text(
                 // displays a placeholder if total debt data missing
                 '$currency ${showDataOrPlaceholder(totalDebt)}',
+                // for integration tests
+                key: Key('total_debt'),
                 style: TextStyle(
                   fontSize: 20.0,
                   fontWeight: FontWeight.bold,
