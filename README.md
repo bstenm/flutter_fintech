@@ -1,6 +1,6 @@
 # flutter_fintech
 
-- Unit tests and widgets test in the test/ folder
+- Unit tests and widgets test in the ```test/``` folder
 - Integration tests in the test_driver/ folder
 
 #### Notes about widget sizes:
