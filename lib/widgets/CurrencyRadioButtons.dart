@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_fintech/utils.dart';
 import 'package:provider/provider.dart';
 
 import '../state/CurrencyState.dart';
@@ -15,9 +16,9 @@ class CurrencyRadioButtons extends StatelessWidget {
           ListTile(
             title: Text('Dollar'),
             leading: Radio(
-              value: 'dollar',
+              value: Currency.dollar,
               groupValue: currency.selected,
-              onChanged: (String value) {
+              onChanged: (Currency value) {
                 currency.selected = value;
                 Navigator.of(context).pop();
               },
@@ -26,9 +27,9 @@ class CurrencyRadioButtons extends StatelessWidget {
           ListTile(
             title: Text('Pound'),
             leading: Radio(
-              value: 'pound',
+              value: Currency.pound,
               groupValue: currency.selected,
-              onChanged: (String value) {
+              onChanged: (Currency value) {
                 currency.selected = value;
                 Navigator.of(context).pop();
               },
@@ -37,9 +38,9 @@ class CurrencyRadioButtons extends StatelessWidget {
           ListTile(
             title: Text('Euro'),
             leading: Radio(
-              value: 'euro',
+              value: Currency.euro,
               groupValue: currency.selected,
-              onChanged: (String value) {
+              onChanged: (Currency value) {
                 currency.selected = value;
                 Navigator.of(context).pop();
               },

@@ -17,12 +17,12 @@ void main() {
   });
   group('currencyConverter', () {
     test('Returns null if data passed is null', () {
-      expect(currencyConverter(null, 'dollar'), null);
+      expect(currencyConverter(null, Currency.dollar), null);
     });
 
     test('Returns the amount corresponding to currency passed', () {
-      expect(currencyConverter(100, 'pound'), 81);
-      expect(currencyConverter(100, 'euro'), 91);
+      expect(currencyConverter(100, Currency.pound), 81);
+      expect(currencyConverter(100, Currency.euro), 91);
     });
   });
 }
