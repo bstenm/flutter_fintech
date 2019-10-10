@@ -1,7 +1,7 @@
 class BankAccountModel {
   final String type;
   final String bankName;
-  final double balance;
+  final int balance;
 
   BankAccountModel({
     this.type,

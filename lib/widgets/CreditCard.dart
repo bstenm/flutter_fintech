@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
+import '../state/CurrencyState.dart';
 import '../models/creditCardModel.dart';
 import '../utils.dart';
 
@@ -8,17 +10,17 @@ class CreditCard extends StatelessWidget {
     Key key,
     this.itemKey,
     this.colorGradient,
-    @required this.currency,
     @required this.creditCard,
   }) : super(key: key);
 
   final String itemKey;
-  final String currency;
   final CreditCardModel creditCard;
   final Map<String, int> colorGradient;
 
   @override
   Widget build(BuildContext context) {
+    final CurrencyState currency = Provider.of<CurrencyState>(context);
+
     return Card(
       child: Container(
         padding: EdgeInsets.all(10.0),
@@ -35,7 +37,7 @@ class CreditCard extends StatelessWidget {
                     Padding(
                       padding: EdgeInsets.only(right: 5.0),
                       child: Text(
-                        currency,
+                        currency.symbol.toString(),
                         style: TextStyle(
                           fontSize: 18.0,
                           color: Colors.white,
@@ -44,7 +46,12 @@ class CreditCard extends StatelessWidget {
                     ),
                     Text(
                       // a placeholder is shown if current credit is null
-                      showDataOrPlaceholder(creditCard.currentCredit),
+                      showDataOrPlaceholder(
+                        currencyConverter(
+                          creditCard.currentCredit,
+                          currency.selected,
+                        ),
+                      ),
                       // for integration tests
                       key: Key('${itemKey}_credit'),
                       style: TextStyle(
@@ -59,7 +66,6 @@ class CreditCard extends StatelessWidget {
                   showDataOrPlaceholder(creditCard.type),
                   // for integration tests
                   key: Key('${itemKey}_type'),
-
                   style: TextStyle(
                     color: Colors.white,
                     fontWeight: FontWeight.w900,

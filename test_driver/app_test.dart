@@ -94,11 +94,11 @@ void main() {
 
       // verify that the 1st bank account is inside the viewport
       expect(await driver.getText(firstAccountType), 'Checking account');
-      expect(await driver.getText(firstAccountBalance), '\$1253.23');
+      expect(await driver.getText(firstAccountBalance), '\$1253');
       expect(await driver.getText(firstAccountBankName), 'Bank of America');
 
       // verify that the 3rd bank account is inside the viewport
-      expect(await driver.getText(thirdAccountBalance), '\$1.34');
+      expect(await driver.getText(thirdAccountBalance), '\$1');
     });
   });
 }

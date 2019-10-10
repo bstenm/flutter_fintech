@@ -26,15 +26,12 @@ class ManageAccounts extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    String currency = '\$';
-
     // displays all the widgets on scren using a ListView to provide scrolling
     return ListView(
       // for integration tests
       key: Key('screen'),
       children: <Widget>[
         AccountOverview(
-          currency: currency,
           totalDebt: totalDebt,
           totalBalance: totalBalance,
         ),
@@ -48,12 +45,10 @@ class ManageAccounts extends StatelessWidget {
         ),
         // the horizontal list of credit cards
         CardList(
-          currency: currency,
           creditCards: creditCards,
         ),
         // the vertical list of accounts
         AccountList(
-          currency: currency,
           accounts: accounts,
         ),
       ],

@@ -1,16 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_fintech/state/CurrencyState.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:flutter_fintech/widgets/SectionHeader.dart';
+import 'package:provider/provider.dart';
 
 void main() {
   testWidgets(
       'Display the header and manage button for a section of the screen',
       (WidgetTester tester) async {
     await tester.pumpWidget(
-      MaterialApp(
-        home: SectionHeader(
-          headerText: 'Header text',
-          dialogText: 'Dialog Text',
+      ChangeNotifierProvider(
+        builder: (_) => CurrencyState(),
+        child: MaterialApp(
+          home: SectionHeader(
+            headerText: 'Header text',
+            dialogText: 'Dialog Text',
+          ),
         ),
       ),
     );

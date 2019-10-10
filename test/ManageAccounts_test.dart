@@ -1,22 +1,27 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_fintech/state/CurrencyState.dart';
 import 'package:flutter_fintech/widgets/AccountList.dart';
 import 'package:flutter_fintech/widgets/AccountOverview.dart';
 import 'package:flutter_fintech/widgets/CardList.dart';
 import 'package:flutter_fintech/widgets/SpendingChart.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:flutter_fintech/widgets/ManageAccounts.dart';
+import 'package:provider/provider.dart';
 
 void main() {
   testWidgets('Displays all the necessary widgets for that screen',
       (WidgetTester tester) async {
     await tester.pumpWidget(
-      MaterialApp(
-        home: ManageAccounts(
-          chartData: [],
-          totalDebt: 234,
-          totalBalance: 23432,
-          creditCards: [],
-          accounts: [],
+      ChangeNotifierProvider(
+        builder: (_) => CurrencyState(),
+        child: MaterialApp(
+          home: ManageAccounts(
+            chartData: [],
+            totalDebt: 234,
+            totalBalance: 23432,
+            creditCards: [],
+            accounts: [],
+          ),
         ),
       ),
     );

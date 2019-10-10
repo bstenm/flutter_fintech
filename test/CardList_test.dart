@@ -1,30 +1,34 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_fintech/models/creditCardModel.dart';
+import 'package:flutter_fintech/state/CurrencyState.dart';
 import 'package:flutter_fintech/widgets/CreditCard.dart';
 import 'package:flutter_fintech/widgets/SectionHeader.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:flutter_fintech/widgets/CardList.dart';
+import 'package:provider/provider.dart';
 
 void main() {
   testWidgets('Displays a list of cards', (WidgetTester tester) async {
     await tester.pumpWidget(
-      MaterialApp(
-        home: CardList(
-          currency: '£',
-          creditCards: [
-            CreditCardModel.fromJson({
-              'type': 'visa',
-              'lastDigits': '1234',
-              'expiryDate': '06/22',
-              'currentCredit': 943,
-            }),
-            CreditCardModel.fromJson({
-              'type': 'visa',
-              'lastDigits': '5678',
-              'expiryDate': '08/26',
-              'currentCredit': 98,
-            }),
-          ],
+      ChangeNotifierProvider(
+        builder: (_) => CurrencyState(),
+        child: MaterialApp(
+          home: CardList(
+            creditCards: [
+              CreditCardModel.fromJson({
+                'type': 'visa',
+                'lastDigits': '1234',
+                'expiryDate': '06/22',
+                'currentCredit': 943,
+              }),
+              CreditCardModel.fromJson({
+                'type': 'visa',
+                'lastDigits': '5678',
+                'expiryDate': '08/26',
+                'currentCredit': 98,
+              }),
+            ],
+          ),
         ),
       ),
     );

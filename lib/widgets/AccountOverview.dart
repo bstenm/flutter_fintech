@@ -1,21 +1,24 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
+import '../state/CurrencyState.dart';
 import '../utils.dart';
+import 'CurrencyRadioButtons.dart';
 
 class AccountOverview extends StatelessWidget {
   AccountOverview({
     Key key,
-    @required this.currency,
     @required this.totalBalance,
     @required this.totalDebt,
   }) : super(key: key);
 
-  final String currency;
   final int totalBalance;
   final int totalDebt;
 
   @override
   Widget build(BuildContext context) {
+    final CurrencyState currency = Provider.of<CurrencyState>(context);
+
     return Padding(
       padding: EdgeInsets.all(12.0),
       child: Row(
@@ -36,26 +39,40 @@ class AccountOverview extends StatelessWidget {
                   ),
                 ),
               ),
-              Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: <Widget>[
-                  Text(
-                    currency,
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 17.0,
+              GestureDetector(
+                onTap: () {
+                  showDialog(
+                    context: context,
+                    builder: (_) => AlertDialog(
+                      content: CurrencyRadioButtons(),
                     ),
-                  ),
-                  Text(
-                    // displays a placeholder if total balance data missing
-                    showDataOrPlaceholder(totalBalance),
-                    // for integration tests
-                    key: Key('total_balance'),
-                    style: TextStyle(
-                      fontSize: 40.0,
+                  );
+                },
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    Text(
+                      currency.symbol.toString(),
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 17.0,
+                      ),
                     ),
-                  ),
-                ],
+                    Text(
+                      showDataOrPlaceholder(
+                        currencyConverter(
+                          totalBalance,
+                          currency.selected,
+                        ),
+                      ),
+                      // for integration tests
+                      key: Key('total_balance'),
+                      style: TextStyle(
+                        fontSize: 40.0,
+                      ),
+                    ),
+                  ],
+                ),
               )
             ],
           ),
@@ -70,8 +87,13 @@ class AccountOverview extends StatelessWidget {
                 ),
               ),
               Text(
-                // displays a placeholder if total debt data missing
-                '$currency ${showDataOrPlaceholder(totalDebt)}',
+                // display a placeholder if total debt data missing
+                '${currency.symbol} ${showDataOrPlaceholder(
+                  currencyConverter(
+                    totalDebt,
+                    currency.selected,
+                  ),
+                )}',
                 // for integration tests
                 key: Key('total_debt'),
                 style: TextStyle(

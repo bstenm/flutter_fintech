@@ -9,15 +9,15 @@ import '../widgets/ManageAccounts.dart';
 import '../models/NavigationItemModel.dart';
 import '../widgets/BottomNavigation.dart';
 
-// the list of links to display inside the bottom navigation bar
-const List<NavigationItemModel> navigationItems = <NavigationItemModel>[
-  NavigationItemModel(title: 'Transactions', icon: Icons.show_chart),
-  NavigationItemModel(title: 'Accounts', icon: Icons.account_balance_wallet),
-  NavigationItemModel(title: 'Event', icon: Icons.event),
-  NavigationItemModel(title: 'More', icon: Icons.more_horiz)
-];
-
 class ManageAccountsScreen extends StatelessWidget {
+// the list of links to display inside the bottom navigation bar
+  final List<NavigationItemModel> navigationItems = <NavigationItemModel>[
+    NavigationItemModel(title: 'Transactions', icon: Icons.show_chart),
+    NavigationItemModel(title: 'Accounts', icon: Icons.account_balance_wallet),
+    NavigationItemModel(title: 'Event', icon: Icons.event),
+    NavigationItemModel(title: 'More', icon: Icons.more_horiz)
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

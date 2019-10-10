@@ -1,21 +1,23 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
+import '../state/CurrencyState.dart';
 import '../utils.dart';
 import '../models/bankAccountModel.dart';
 import 'SectionHeader.dart';
 
 class AccountList extends StatelessWidget {
-  final String currency;
   final List<BankAccountModel> accounts;
 
   AccountList({
     Key key,
     @required this.accounts,
-    @required this.currency,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final CurrencyState currency = Provider.of<CurrencyState>(context);
+
     return Column(
       children: <Widget>[
         SectionHeader(
@@ -29,7 +31,7 @@ class AccountList extends StatelessWidget {
         Column(
           children: accounts.map((account) {
             final String type = account.type;
-            final double balance = account.balance;
+            final int balance = account.balance;
             final String bankName = account.bankName;
             // the logo name is the bank name in lower case and without white spaces
             final String logo = bankName == null
@@ -67,7 +69,12 @@ class AccountList extends StatelessWidget {
                 ),
                 trailing: Text(
                   // displays a placeholder if the balance data is missing
-                  '$currency${showDataOrPlaceholder(balance)}',
+                  '${currency.symbol}${showDataOrPlaceholder(
+                    currencyConverter(
+                      balance,
+                      currency.selected,
+                    ),
+                  )}',
                   // for integration tests
                   key: Key('${type}_account_balance'),
                   style: TextStyle(
