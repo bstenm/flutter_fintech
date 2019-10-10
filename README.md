@@ -1,5 +1,9 @@
 # flutter_fintech
 
+### With provider
+Pull the ```with_currency_converter``` branch with the command ```git clone --single-branch --branch with_currency_converter  git@github.com:bstenm/flutter_fintech.git``` to get the code using provider for a currency converter that is displayed in a dialog box when tapping on the total balance amount.
+  
+### Tests
 - Unit tests and widgets test in the ```test/``` folder: run the test with ```flutter test```
 - Integration tests in the ```test_driver/``` folder: run the tests with ```flutter drive --target=test_driver/app.dart```
 
