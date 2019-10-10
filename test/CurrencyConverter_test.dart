@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_fintech/state/CurrencyState.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:flutter_fintech/widgets/CurrencyRadioButtons.dart';
+import 'package:flutter_fintech/widgets/CurrencyConverter.dart';
 import 'package:provider/provider.dart';
 
 void main() {
@@ -12,7 +12,7 @@ void main() {
         builder: (_) => CurrencyState(),
         child: MaterialApp(
           home: Material(
-            child: CurrencyRadioButtons(),
+            child: CurrencyConverter(),
           ),
         ),
       ),

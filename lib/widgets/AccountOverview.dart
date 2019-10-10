@@ -3,7 +3,7 @@ import 'package:provider/provider.dart';
 
 import '../state/CurrencyState.dart';
 import '../utils.dart';
-import 'CurrencyRadioButtons.dart';
+import 'CurrencyConverter.dart';
 
 class AccountOverview extends StatelessWidget {
   AccountOverview({
@@ -44,7 +44,7 @@ class AccountOverview extends StatelessWidget {
                   showDialog(
                     context: context,
                     builder: (_) => AlertDialog(
-                      content: CurrencyRadioButtons(),
+                      content: CurrencyConverter(),
                     ),
                   );
                 },

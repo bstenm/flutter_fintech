@@ -27,6 +27,33 @@ void main() {
       expect(await driver.getText(totalDebt), '\$ 3200');
     });
 
+    test('Displays the currency converter on tapping the total balance',
+        () async {
+      final totalDebt = find.byValueKey('total_debt');
+      final totalBalance = find.byValueKey('total_balance');
+      final euroOption = find.byValueKey('euro_option_text');
+      final dollarOption = find.byValueKey('dollar_option_text');
+      final poundOption = find.byValueKey('pound_option_text');
+
+      await driver.tap(totalBalance);
+      expect(await driver.getText(euroOption), 'Euro');
+      expect(await driver.getText(dollarOption), 'Dollar');
+      expect(await driver.getText(poundOption), 'Pound');
+
+      // close the dialog by selecting the "Pound" option
+      await driver.tap(find.byValueKey('pound_option_button'));
+
+      // Now displays the total debt in pound
+      expect(await driver.getText(totalDebt), '£ 2592');
+
+      // switch back to dollar
+      await driver.tap(totalBalance);
+      await driver.tap(find.byValueKey('dollar_option_button'));
+
+      // Now displays the total debt in dollar
+      expect(await driver.getText(totalDebt), '\$ 3200');
+    });
+
     test('Displays a section header for the credit card list', () async {
       final btn = find.byValueKey('card_list_manage_btn');
       final header = find.byValueKey('card_list_section_header');
